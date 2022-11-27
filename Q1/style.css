@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  height: 100vh;
+  font-family: sans-serif;
+}
+.container {
+  width: 50%;
+  max-width: 30em;
+  border: 2px solid #a1a1a1;
+  padding: 0.5em;
+  margin: auto;
+}
+#inputs,
+.results {
+  margin: 2em 0;
+}
+#inputs div {
+  margin: 1em 0;
+}
+.results p {
+  margin: 1em 0;
+}
