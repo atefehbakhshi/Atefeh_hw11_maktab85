@@ -69,4 +69,26 @@ class Cylindrical extends Circle {
   }
 }
 
+const item = document.querySelector("#shape");
+const radius = document.getElementById("radius");
+const width = document.getElementById("width");
+const height = document.getElementById("height");
+const inputs = document.getElementById("inputs");
+
+item.addEventListener("mouseout", () => {
+  let selectedShape = item.options[item.selectedIndex].value;
+  radius.removeAttribute("disabled");
+  width.removeAttribute("disabled");
+  height.removeAttribute("disabled");
+
+  if (selectedShape === "rectangular" || selectedShape === "square") {
+    radius.setAttribute("disabled", "");
+  } else if (selectedShape === "circle") {
+    width.setAttribute("disabled", "");
+    height.setAttribute("disabled", "");
+  } else {
+    width.setAttribute("disabled", "");
+  }
+});
+
 
