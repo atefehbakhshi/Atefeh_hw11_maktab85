@@ -91,4 +91,11 @@ item.addEventListener("mouseout", () => {
   }
 });
 
+inputs.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    console.log(e.target.value)
+    console.log(e.path[0].id)
+  }
+});
+
 
