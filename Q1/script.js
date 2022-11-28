@@ -1,8 +1,21 @@
 "use strict";
+// define variables
+const item = document.querySelector("#shape");
+const inputs = document.querySelectorAll(".input");
+const radius = document.getElementById("radius");
+const width = document.getElementById("width");
+const height = document.getElementById("height");
+const areaResult = document.getElementById("area");
+const perimeterResult = document.getElementById("permeter");
+
+// the first time when page loaded
+radius.setAttribute("disabled", "");
+
+// define classes
 class Shape {
   #shapeName;
   constructor(name) {
-    this.#shape =  name;
+    this.#shape = name;
   }
   set #shape(name) {
     this.#shapeName = name;
@@ -10,31 +23,17 @@ class Shape {
   get #shape() {
     return this.#shapeName;
   }
+
   area() {}
   perimeter() {}
 }
-
-// class Polygon extends Shape {
-//   constructor(height, width) {
-//     super();
-//     this._height = +height;
-//     this._width = +width;
-//   }
-//   area() {
-//     return this._height * this._width;
-//   }
-//   perimeter() {
-//     return (this._height + this._width) * 2;
-//   }
-// }
-
 class Polygon extends Shape {
   #width;
   #height;
-  constructor(w,h) {
+  constructor(w, h) {
     super();
-    this.#userWidth =  +w;
-    this.#userHeight=+h;
+    this.#userWidth = +w;
+    this.#userHeight = +h;
   }
   set #userWidth(w) {
     this.#width = w;
@@ -49,7 +48,6 @@ class Polygon extends Shape {
     return this.#height;
   }
 
-
   area() {
     return this.#height * this.#width;
   }
@@ -57,32 +55,17 @@ class Polygon extends Shape {
     return (this.#height + this.#width) * 2;
   }
 }
-
-// class NonPolygon extends Shape {
-//   constructor(radius) {
-//     super();
-//     this._radius = +radius;
-//   }
-//   area() {
-//     let piNumber = 3.14;
-//     return piNumber * this._radius ** 2;
-//   }
-//   perimeter() {
-//     let piNumber = 3.14;
-//     return piNumber * 2 * this._radius;
-//   }
-// }
 class NonPolygon extends Shape {
-  #radius
+  #radius;
   constructor(r) {
     super();
     this.#userRadius = +r;
   }
-  set #userRadius(r){
+  set #userRadius(r) {
     this.#radius = r;
   }
-  get #userRadius(){
-    return this.#radius
+  get #userRadius() {
+    return this.#radius;
   }
 
   area() {
@@ -117,14 +100,14 @@ class Cylindrical extends Circle {
   #height;
   constructor(r, h) {
     super(r);
-    this.#userRadius =r;
+    this.#userRadius = +r;
     this.#userHeight = +h;
   }
-  set #userRadius(r){
-    this.#radius=r;
+  set #userRadius(r) {
+    this.#radius = r;
   }
-  get #userRadius(){
-    return this.#radius
+  get #userRadius() {
+    return this.#radius;
   }
   set #userHeight(h) {
     this.#height = h;
@@ -143,21 +126,15 @@ class Cylindrical extends Circle {
   }
 }
 
-const item = document.querySelector("#shape");
-const inputs = document.querySelectorAll(".input");
-const radius = document.getElementById("radius");
-const width = document.getElementById("width");
-const height = document.getElementById("height");
-const areaResult = document.getElementById("area");
-const perimeterResult = document.getElementById("permeter");
-radius.setAttribute("disabled", "");
-
+// display on htmlpage
 item.addEventListener("mouseout", () => {
+  // specify selected shape
   let selectedShape = item.options[item.selectedIndex].value;
+  // when change selected shape
   radius.removeAttribute("disabled");
   width.removeAttribute("disabled");
   height.removeAttribute("disabled");
-
+// disable excessive inputs
   if (selectedShape === "rectangular" || selectedShape === "square") {
     radius.setAttribute("disabled", "");
   } else if (selectedShape === "circle") {
@@ -167,6 +144,7 @@ item.addEventListener("mouseout", () => {
     width.setAttribute("disabled", "");
   }
 
+  // get the input values
   let inputsValue = {};
   inputs.forEach((item) => {
     item.addEventListener("keyup", (e) => {
@@ -175,23 +153,28 @@ item.addEventListener("mouseout", () => {
         if (item.id === "width") inputsValue.width = item.value;
         if (item.id === "height") inputsValue.height = item.value;
 
+        // define instance object
         let shape;
         if (inputsValue.radius && inputsValue.height) {
           shape = new Cylindrical(inputsValue.radius, inputsValue.height);
+          // display results on the page
           areaResult.innerHTML = shape.area();
           perimeterResult.innerHTML = shape.perimeter();
         } else if (inputsValue.radius) {
           shape = new Circle(inputsValue.radius);
+          // display results on the page
           areaResult.innerHTML = shape.area();
           perimeterResult.innerHTML = shape.perimeter();
         } else if (inputsValue.height && inputsValue.width) {
           if (selectedShape === "rectangular") {
             shape = new Rectangle(inputsValue.width, inputsValue.height);
+            // display results on the page
             areaResult.innerHTML = shape.area();
             perimeterResult.innerHTML = shape.perimeter();
           }
           if (selectedShape === "square") {
             shape = new Square(inputsValue.width, inputsValue.height);
+            // display results on the page
             areaResult.innerHTML = shape.area();
             perimeterResult.innerHTML = shape.perimeter();
           }
