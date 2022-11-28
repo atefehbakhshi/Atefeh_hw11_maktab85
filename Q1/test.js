@@ -10,8 +10,14 @@ class ClassWithPrivateAccessor {
   
     constructor(name) {
       this.#shape =  name;
+     
     }
+    m(){
+        console.log(this.#shapeName)
+    }
+    
   }
   
-  new ClassWithPrivateAccessor('hi');
+let x =  new ClassWithPrivateAccessor('h555i');
 
+x.m()

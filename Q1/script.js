@@ -1,38 +1,97 @@
 "use strict";
 class Shape {
-  constructor(shapeName) {
-    this._shapeName = shapeName;
+  #shapeName;
+  constructor(name) {
+    this.#shape =  name;
+  }
+  set #shape(name) {
+    this.#shapeName = name;
+  }
+  get #shape() {
+    return this.#shapeName;
   }
   area() {}
   perimeter() {}
 }
 
+// class Polygon extends Shape {
+//   constructor(height, width) {
+//     super();
+//     this._height = +height;
+//     this._width = +width;
+//   }
+//   area() {
+//     return this._height * this._width;
+//   }
+//   perimeter() {
+//     return (this._height + this._width) * 2;
+//   }
+// }
+
 class Polygon extends Shape {
-  constructor(height, width) {
+  #width;
+  #height;
+  constructor(w,h) {
     super();
-    this._height = +height;
-    this._width = +width;
+    this.#userWidth =  +w;
+    this.#userHeight=+h;
   }
+  set #userWidth(w) {
+    this.#width = w;
+  }
+  get #userWidth() {
+    return this.#width;
+  }
+  set #userHeight(h) {
+    this.#height = h;
+  }
+  get #userHeight() {
+    return this.#height;
+  }
+
+
   area() {
-    return this._height * this._width;
+    return this.#height * this.#width;
   }
   perimeter() {
-    return (this._height + this._width) * 2;
+    return (this.#height + this.#width) * 2;
   }
 }
 
+// class NonPolygon extends Shape {
+//   constructor(radius) {
+//     super();
+//     this._radius = +radius;
+//   }
+//   area() {
+//     let piNumber = 3.14;
+//     return piNumber * this._radius ** 2;
+//   }
+//   perimeter() {
+//     let piNumber = 3.14;
+//     return piNumber * 2 * this._radius;
+//   }
+// }
 class NonPolygon extends Shape {
-  constructor(radius) {
+  #radius
+  constructor(r) {
     super();
-    this._radius = +radius;
+    this.#userRadius = +r;
   }
+  set #userRadius(r){
+    this.#radius = r;
+  }
+  get #userRadius(){
+    return this.#radius
+  }
+
   area() {
     let piNumber = 3.14;
-    return piNumber * this._radius ** 2;
+    return piNumber * this.#radius ** 2;
   }
   perimeter() {
     let piNumber = 3.14;
-    return piNumber * 2 * this._radius;
+    return piNumber * 2 * this.#radius;
   }
 }
 
@@ -54,19 +113,33 @@ class Circle extends NonPolygon {
 }
 
 class Cylindrical extends Circle {
-  constructor(radius, height) {
-    super(radius);
-    this._height = +height;
-    this._radius = +radius;
+  #radius;
+  #height;
+  constructor(r, h) {
+    super(r);
+    this.#userRadius =r;
+    this.#userHeight = +h;
+  }
+  set #userRadius(r){
+    this.#radius=r;
+  }
+  get #userRadius(){
+    return this.#radius
+  }
+  set #userHeight(h) {
+    this.#height = h;
+  }
+  get #userHeight() {
+    return this.#height;
   }
 
   area() {
     let piNumber = 3.14;
-    return 2 * piNumber * this._radius * (this._radius + this._height);
+    return 2 * piNumber * this.#radius * (this.#radius + this.#height);
   }
   perimeter() {
     let piNumber = 3.14;
-    return 2 * piNumber * this._radius;
+    return 2 * piNumber * this.#radius;
   }
 }
 
