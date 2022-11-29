@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //   align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+  min-height: 30em;
+  //   width: 750px;
+  max-width: 750px;
+  margin: auto;
+  overflow: hidden;
+}
+.sign {
+  position: relative;
+}
+.sign-in {
+  opacity: 1;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+
+  display: flex;
+  min-height: 30em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3em;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .socials {
+    margin: 1.5em 0;
+  }
+  span {
+    font-size: 0.75em;
+  }
+  input {
+    margin: 0.5em 0;
+    padding: 0.75em 1em;
+    border: none;
+    background-color: #eee;
+  }
+  a {
+    margin: 1em 0;
+    font-size: 0.875em;
+    text-decoration: none;
+    color: #333;
+  }
+  button {
+    border-radius: 1.25em;
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 0.75em 3em;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  transition: transform 0.6s ease-in-out;
+}
+.sign-up {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+
+  display: flex;
+  min-height: 30em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3em;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .socials {
+    margin: 1.5em 0;
+  }
+  span {
+    font-size: 0.75em;
+  }
+  input {
+    margin: 0.5em 0;
+    padding: 0.75em 1em;
+    border: none;
+    background-color: #eee;
+  }
+  button {
+    border-radius: 1.25em;
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 0.75em 3em;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  transition: transform 0.6s ease-in-out;
+}
+.cover {
+  z-index: 100;
+
+  min-height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3.5em;
+  background: linear-gradient(90deg, #ff4b2b 0%, #ff416c 100%);
+  color: #fff;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  p {
+    margin: 1.25em 0 1.875em 0;
+    font-size: 0.875em;
+    font-weight: 100;
+    line-height: 1.25em;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+  button {
+    border-radius: 1.25em;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 0.75em 3em;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  transition: transform 0.6s ease-in-out;
+}
+
+.rightcover {
+  transform: translateX(-100%);
+}
+.right-sign-in {
+  transform: translateX(100%);
+  // opacity: 0;
+  z-index: -10;
+  animation: show 0.6s;
+}
+.left-sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 10;
+  animation: hide 0.6s;
+}
+
+@keyframes show {
+  0% {
+    opacity: 1;
+    z-index: 0;
+  }
+  50% {
+    opacity: 1;
+    z-index: 0;
+  }
+  51% {
+    opacity: 0;
+    z-index: -10;
+  }
+
+  100% {
+    opacity: 0;
+    z-index: -10;
+  }
+ 
+}
+@keyframes hide {
+  0% {
+    opacity: 0;
+    z-index: -1;
+  }
+  50% {
+    opacity: 0;
+    z-index: -1;
+  }
+  51% {
+    opacity: 1;
+    z-index: 10;
+  }
+  100% {
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+$breakpoints: (
+  "sm": 480px,
+  "md": 720px,
+);
+
+@mixin sm {
+  @media (min-width: map-get($breakpoints,"sm")) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: map-get($breakpoints,"md")) {
+    @content;
+  }
+}
+.responsive {
+  @include sm {
+    flex-direction: row;
+    .sign {
+      width: 50%;
+      padding: 0 0.5em;
+    }
+    .cover {
+      width: 50%;
+      padding: 0 0.5em;
+    }
+  }
+  @include md {
+    .sign-in {
+      padding: 0 3em;
+    }
+    .cover {
+      padding: 0 3.5em;
+    }
+  }
+}
