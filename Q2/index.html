@@ -1,64 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/index.css" />
+<head>
+    <meta charset="UTF-8">
     <title>Q2</title>
-  </head>
-
-  <body>
-    <div class="container responsive">
-      <div class="sign">
-        <div id="sign-in" class="sign-in">
-          <h1>Sign in</h1>
-          <div class="socials">
-            <span>...</span>
-            <span>...</span>
-            <span>...</span>
-          </div>
-          <span>or use your account</span>
-          <input type="email" name="email" id="email" placeholder="Email" />
-          <input
-            type="text"
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
-          <a href="#">Forgot your password?</a>
-          <button>SIGN IN</button>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="sign-container sign-up">
+            <div class="sign">
+                <h1>Create Account</h1>
+                <div class="social">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign Up</button>
+            </div>
         </div>
-
-        <div id="sign-up" class="sign-up">
-          <h1>Create Account</h1>
-          <div class="socials">
-            <span>...</span>
-            <span>...</span>
-            <span>...</span>
-          </div>
-          <span>or use your email for registration</span>
-          <input type="text" name="name" id="name" placeholder="Name" />
-          <input type="email" name="email" id="email" placeholder="Email" />
-          <input
-            type="text"
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
-          <button>SIGN UP</button>
+        <div class="sign-container sign-in">
+            <div class="sign">
+                <h1>Sign in</h1>
+                <div class="social">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+            </div>
         </div>
-      </div>
-
-      <div class="cover">
-        <div class="left-cover"></div>
-        <div class="right-cover">
-          <h1>Hello, Friend!</h1>
-        <p>Enter your personal details and start journey with us</p>
-        <button id="sign-up-btn">SIGN UP</button>
+        <div class="cover-container">
+            <div class="cover">
+                <div class="cover-panel cover-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="cover-btn" id="sign-in-btn">Sign In</button>
+                </div>
+                <div class="cover-panel cover-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="cover-btn" id="sign-up-btn">Sign Up</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

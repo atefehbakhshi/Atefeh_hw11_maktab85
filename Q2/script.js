@@ -1,21 +1,20 @@
-'use strict'
-const signUpBtn = document.querySelector('#sign-up-btn')
-const signIn = document.querySelector('#sign-in')
-const signUp = document.querySelector('#sign-up');
-const cover = document.querySelector('.cover')
-signUpBtn.addEventListener('click',()=>{
-// signIn.classList.toggle('hide');
-// signUp.classList.toggle('hide');
+const signUpButton = document.getElementById("sign-up-btn");
+const signInButton = document.getElementById("sign-in-btn");
+const containerParent = document.getElementById("container");
 
+class classToggler {
+  constructor(container) {
+    this.container = container;
+  }
+  add() {
+  container.classList.add("right-panel-active");
+  }
+  remove() {
+    container.classList.remove("right-panel-active");
+  }
+}
 
-signUp.classList.toggle('left-sign-up');
+const clicked = new classToggler(containerParent)
 
-signIn.classList.toggle('right-sign-in');
-cover.classList.toggle('rightcover')
-
-// if((signIn).css('opacity')==0){
-//     (signIn).css('opacity',0)
-// }else{
-//     (signIn).css('opacity',0)
-// }
-})
+signUpButton.addEventListener("click",clicked.add);
+signInButton.addEventListener("click",clicked.remove);
